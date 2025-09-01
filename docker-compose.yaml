@@ -1,0 +1,14 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    env_file:
+      - .env
+    environment:
+        POSTGRES_USER: ${PGUSER}
+        POSTGRES_PASSWORD: ${PGPASSWORD}
+        POSTGRES_DB: ${PGDATABASE}
+  app:
+    image: store-app
+    ports:
+      - 13000:3000
