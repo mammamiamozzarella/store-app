@@ -24,7 +24,7 @@ It allows users to:
 ### Steps
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/mammamiamozzarella/store-app.git
    cd <your-project-folder>
    ```
 2. **Copy the example file and update it with your values:**
