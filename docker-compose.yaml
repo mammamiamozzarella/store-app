@@ -12,3 +12,5 @@ services:
         image: store-app
         ports:
             - 13000:3000
+        volumes:
+            - ./:/usr/src/app
