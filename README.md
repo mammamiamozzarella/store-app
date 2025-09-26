@@ -5,13 +5,13 @@
 1. [Overview](#overview)
 2. [Setup](#setup)
 3. [Starting the Application](#starting-the-application)
-4.[Running Tests](#running-tests)
-5.[API Endpoints](#api-endpoints)
-5.1 [Categories API](#categories-api)
-5.2 [Products API](#products-api)
-5.3 [Users API](#users-api)
-5.4. [Quote API](#quote-api)
-5.5. [Orders API](#orders-api)
+4. [Running Tests](#running-tests)
+5. [API Endpoints](#api-endpoints)
+6. [Categories API](#categories-api)
+7. [Products API](#products-api)
+8. [Users API](#users-api)
+9. [Quote API](#quote-api)
+10. [Orders API](#orders-api)
 
 ---
 
