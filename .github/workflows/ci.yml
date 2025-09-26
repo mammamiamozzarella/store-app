@@ -17,29 +17,28 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up .env
-        run: |
-          cp .env.example .env
+        run: cp .env.example .env
 
       - name: Build services
-        run: docker-compose build
+        run: docker compose build
 
       - name: Start services
-        run: docker-compose up -d
+        run: docker compose up -d
 
       - name: Wait for Postgres
         run: |
-          until docker-compose exec -T db pg_isready -U $PGUSER; do
+          until docker compose exec -T db pg_isready -U $PGUSER; do
             echo "Waiting for Postgres..."
             sleep 2
           done
 
       - name: Run database migrations
-        run: docker-compose exec -T app node runMigrations.js
+        run: docker compose exec -T app node runMigrations.js
 
       - name: Run ESLint
-        run: docker-compose exec -T app npx eslint . --ext .js
+        run: docker compose exec -T app npx eslint . --ext .js
 
       - name: Run tests
-        run: docker-compose exec -T app npm test
+        run: docker compose exec -T app npm test
         env:
           NODE_ENV: test
