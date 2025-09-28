@@ -21,7 +21,7 @@ jobs:
         run: docker compose -f docker-compose.ci.yml build
 
       - name: Start services
-        run: docker compose -f docker-compose.ci.yml up -d db
+        run: docker compose -f docker-compose.ci.yml up -d
 
       - name: Wait for Postgres
         run: |
