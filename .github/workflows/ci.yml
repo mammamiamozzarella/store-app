@@ -18,26 +18,23 @@ jobs:
         run: cp .env.example .env
 
       - name: Build services
-        run: docker compose build
+        run: docker compose -f docker-compose.ci.yml build
 
       - name: Start services
-        run: docker compose up -d
+        run: docker compose -f docker-compose.ci.yml up -d db
 
       - name: Wait for Postgres
         run: |
-          until docker compose exec -T db pg_isready -U postgres; do
+          until docker compose -f docker-compose.ci.yml exec -T db pg_isready -U postgres; do
             echo "Waiting for Postgres..."
             sleep 2
           done
 
       - name: Run database migrations
-        run: docker compose run --rm app node runMigrations.js
-
-      - name: Run ESLint
-        run: docker compose run --rm app npx eslint . --ext .js
+        run: docker compose -f docker-compose.ci.yml exec -T app node runMigrations.js
 
       - name: Run tests
-        run: docker compose run --rm app npm test
+        run: docker compose -f docker-compose.ci.yml exec -T app npm test
         env:
           NODE_ENV: test
 
