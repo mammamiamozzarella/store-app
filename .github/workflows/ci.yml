@@ -2,11 +2,9 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   ci:
@@ -33,12 +31,16 @@ jobs:
           done
 
       - name: Run database migrations
-        run: docker compose exec -T app node runMigrations.js
+        run: docker compose run --rm app node runMigrations.js
 
       - name: Run ESLint
-        run: docker compose exec -T app npx eslint . --ext .js
+        run: docker compose run --rm app npx eslint . --ext .js
 
       - name: Run tests
-        run: docker compose exec -T app npm test
+        run: docker compose run --rm app npm test
         env:
           NODE_ENV: test
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v

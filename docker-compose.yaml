@@ -9,7 +9,8 @@ services:
             POSTGRES_PASSWORD: ${PGPASSWORD}
             POSTGRES_DB: ${PGDATABASE}
     app:
-        image: store-app
+        build: .
+        image: store-app:ci
         ports:
             - 13000:3000
         volumes:
