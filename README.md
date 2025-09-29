@@ -38,15 +38,11 @@ It allows users to:
     ```bash
     cp .env.example .env
     ```
-3. **Build the application image**
-   ```bash
-   docker build -t store-app .
-    ```
-4. **Start the services (Postgres + App)**
+3. **Start the services (Postgres + App)**
     ```bash
     docker-compose up -d
     ```
-5. **Run database migrations**
+4. **Run database migrations**
     ```bash
     docker compose exec app node runMigrations.js
     ```
